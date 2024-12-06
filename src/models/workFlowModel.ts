@@ -1,7 +1,8 @@
 import { Schema, model } from "mongoose";
-import { transformIdPlugin } from "../plugins/transformIdPlugin";
+// import { transformIdPlugin } from "../plugins/transformIdPlugin";
 
 const WorkflowSchema = new Schema({
+    // id: { type: String, required: true, _id: false } ,
     name: { 
         type: String, 
         required: true,
@@ -34,7 +35,7 @@ const WorkflowSchema = new Schema({
         default: Date.now 
     }
 });
-WorkflowSchema.plugin(transformIdPlugin);
+// WorkflowSchema.plugin(transformIdPlugin);
 const WorkflowModel = model('workflow' , WorkflowSchema);
 
 export default WorkflowModel;

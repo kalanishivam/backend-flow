@@ -38,7 +38,7 @@ export const getUserEmailTemplates = async(req : Request , res: Response)=>{
             res.status(400).json({error : "No user found"});
             return;
         }
-        const emailTemplates = await EmailTemplateModel.find({user : user._id});
+        const emailTemplates = await EmailTemplateModel.find({user : user.id});
         res.status(200).json(emailTemplates)
     }catch(error){
         res.status(500).json({error : "Internal server error"});

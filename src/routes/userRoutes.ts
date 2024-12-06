@@ -1,11 +1,13 @@
 import { Router } from 'express';
-import { loginUser, signupUser } from '../controllers/userController';
+import { loginUser, logout, signupUser, verifyToken } from '../controllers/userController';
+import { authMiddleware } from '../middlewares/auth';
 
 const router = Router();
 
 router.post('/signup', signupUser);
-// router.get('/verify', authenticateToken, verifyTokenController);
+router.get('/verify', authMiddleware, verifyToken);
 router.post('/login' ,  loginUser);
+router.post('/logout',authMiddleware, logout);
 
 
 export default router;

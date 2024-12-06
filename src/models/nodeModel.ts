@@ -1,8 +1,9 @@
 import { Schema, model } from "mongoose";
-import { transformIdPlugin } from "../plugins/transformIdPlugin";
+// import { transformIdPlugin } from "../plugins/transformIdPlugin";
 // import normalize from 'normalize-mongoose';
 
 const NodeSchema = new Schema({
+    id: { type: String, required: true, _id: false } ,
     type: { 
         type: String, 
         // enum: ['COLD_EMAIL', 'WAIT_DELAY', 'LEAD_SOURCE'],
@@ -20,13 +21,9 @@ const NodeSchema = new Schema({
         width: { type: Number },
         height: { type: Number }
     },
-    selected: {
-        type: Boolean,
-        default: false
-    }
 });
 // NodeSchema.plugin(normalize);  
-NodeSchema.plugin(transformIdPlugin) 
+// NodeSchema.plugin(transformIdPlugin) 
 const NodeModel = model('node' , NodeSchema);    
 
 export default NodeModel;

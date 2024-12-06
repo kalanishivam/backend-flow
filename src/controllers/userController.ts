@@ -7,7 +7,7 @@ import { cookieOptions, JWT_SECRET } from '../config/constants';
 
 export const signupUser = async(req : Request,   res : Response)=>{
     try{
-        console.log('in here in the sugnup function ')
+        
         const parsedData = SignupSchema.safeParse(req.body);
         if(!parsedData.success){
             res.status(400).json({error : "Invalid input"})
@@ -53,6 +53,7 @@ export const loginUser = async(req : Request,   res : Response)=>{
             res.status(400).json({error : "Invalid email or password"});
             return;
         }
+        
         const token = jwt.sign({user} , JWT_SECRET);
         res.cookie('token' , token , cookieOptions);
         res.status(200).json({message : "Login successful"});
@@ -63,6 +64,12 @@ export const loginUser = async(req : Request,   res : Response)=>{
 }
 
 export const verifyToken = (req: Request, res: Response) => {
-   
+  
     res.status(200).json({ message: "Token is valid" });
-  };
+};
+
+export const logout = (req: Request, res: Response) => {    
+    
+    res.clearCookie('token');
+    res.status(200).json({ message: "Logout successful" });
+};

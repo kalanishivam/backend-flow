@@ -5,7 +5,8 @@ const EdgeSchema = new Schema({
     id: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
+        _id: false
     },
     source: {
         type: Schema.Types.ObjectId,
@@ -20,6 +21,6 @@ const EdgeSchema = new Schema({
     }
 });
 
-EdgeSchema.plugin(transformIdPlugin);
+// EdgeSchema.plugin(transformIdPlugin);
 const EdgeModel = model('edge' , EdgeSchema);
 export default EdgeModel;
