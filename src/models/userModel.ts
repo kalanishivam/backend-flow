@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import normalize from 'normalize-mongoose';
 
 const userSchema = new Schema({
     userName : {
@@ -16,6 +17,8 @@ const userSchema = new Schema({
     }
 })
 
+
+userSchema.plugin(normalize);
 const userModel = model('User' , userSchema);
 
 export default userModel;

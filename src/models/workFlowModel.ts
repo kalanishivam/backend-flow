@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import normalize from 'normalize-mongoose';
 
 const WorkflowSchema = new Schema({
     name: { 
@@ -17,12 +18,12 @@ const WorkflowSchema = new Schema({
     }],
     edges: [{
         type: Schema.Types.ObjectId,
-        ref: 'Edge'
+        ref: 'Edge',
     }],
     status: {
         type: String,
-        enum: ['draft', 'active', 'paused', 'completed'],
-        default: 'draft'
+        enum: ['inProgress', 'active', 'paused', 'completed'],
+        default: 'active'
     },
     createdAt: { 
         type: Date, 
@@ -33,7 +34,7 @@ const WorkflowSchema = new Schema({
         default: Date.now 
     }
 });
-
+WorkflowSchema.plugin(normalize);
 const WorkflowModel = model('workflow' , WorkflowSchema);
 
 export default WorkflowModel;
