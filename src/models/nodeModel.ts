@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
-import normalize from 'normalize-mongoose';
+import { transformIdPlugin } from "../plugins/transformIdPlugin";
+// import normalize from 'normalize-mongoose';
 
 const NodeSchema = new Schema({
     type: { 
@@ -24,7 +25,8 @@ const NodeSchema = new Schema({
         default: false
     }
 });
-NodeSchema.plugin(normalize);   
+// NodeSchema.plugin(normalize);  
+NodeSchema.plugin(transformIdPlugin) 
 const NodeModel = model('node' , NodeSchema);    
 
 export default NodeModel;

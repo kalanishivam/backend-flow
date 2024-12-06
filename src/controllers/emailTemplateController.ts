@@ -13,8 +13,8 @@ export const createNewEmailTemplate = async(req : Request,   res : Response)=>{
         }
         const {name , subject , body} = parsedData.data;
         const user = req.user;
-        console.log(user)
-        console.log(`this is the user information`)
+        // console.log(user)
+        // console.log(`this is the user information`)
         if(!user){
             res.status(400).json({error : "No user found"});
         }
@@ -22,7 +22,7 @@ export const createNewEmailTemplate = async(req : Request,   res : Response)=>{
             name : name , 
             subject : subject,
             body : body,
-            user : user._id
+            user : user.id
         })
         res.status(200).json({message : "Email template created successfully"});
     }catch(error){

@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
-import normalize from 'normalize-mongoose';
+import { transformIdPlugin } from "../plugins/transformIdPlugin";
+
 const EdgeSchema = new Schema({
     id: {
         type: String,
@@ -9,7 +10,6 @@ const EdgeSchema = new Schema({
     source: {
         type: Schema.Types.ObjectId,
         ref: 'Node',
-    
         required: true,
     },
     target: {
@@ -20,6 +20,6 @@ const EdgeSchema = new Schema({
     }
 });
 
-EdgeSchema.plugin(normalize);
+EdgeSchema.plugin(transformIdPlugin);
 const EdgeModel = model('edge' , EdgeSchema);
 export default EdgeModel;

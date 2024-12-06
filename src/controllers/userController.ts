@@ -7,6 +7,7 @@ import { cookieOptions, JWT_SECRET } from '../config/constants';
 
 export const signupUser = async(req : Request,   res : Response)=>{
     try{
+        console.log('in here in the sugnup function ')
         const parsedData = SignupSchema.safeParse(req.body);
         if(!parsedData.success){
             res.status(400).json({error : "Invalid input"})

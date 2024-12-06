@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import normalize from 'normalize-mongoose';
+import { transformIdPlugin } from "../plugins/transformIdPlugin";
 
 const userSchema = new Schema({
     userName : {
@@ -15,10 +15,10 @@ const userSchema = new Schema({
         type : String,
         required : true
     }
-})
+   
+},  {timestamps : true})
 
-
-userSchema.plugin(normalize);
+userSchema.plugin(transformIdPlugin);
 const userModel = model('User' , userSchema);
 
 export default userModel;

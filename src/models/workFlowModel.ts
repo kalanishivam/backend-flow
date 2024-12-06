@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import normalize from 'normalize-mongoose';
+import { transformIdPlugin } from "../plugins/transformIdPlugin";
 
 const WorkflowSchema = new Schema({
     name: { 
@@ -34,7 +34,7 @@ const WorkflowSchema = new Schema({
         default: Date.now 
     }
 });
-WorkflowSchema.plugin(normalize);
+WorkflowSchema.plugin(transformIdPlugin);
 const WorkflowModel = model('workflow' , WorkflowSchema);
 
 export default WorkflowModel;

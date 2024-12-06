@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
-import normalize from 'normalize-mongoose';
+import { transformIdPlugin } from "../plugins/transformIdPlugin";
+
 const EmailTemplateSchema = new Schema({
     name : {
         type : String,
@@ -30,7 +31,7 @@ const EmailTemplateSchema = new Schema({
       timestamps: true
 })
 
-EmailTemplateSchema.plugin(normalize);
+EmailTemplateSchema.plugin(transformIdPlugin);
 EmailTemplateSchema.index({ user: 1, name: 1 }, { unique: true });
 
 const EmailTemplateModel = model('EmailTemplate' , EmailTemplateSchema);    
