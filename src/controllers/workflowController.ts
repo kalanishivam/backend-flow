@@ -11,7 +11,7 @@ export const getWorkflowsOfUser = async (req: Request, res: Response) => {
         const workflows = await WorkflowModel.find({
             userId : user.id
         } ,  { name: 1, status: 1, createdAt: 1, _id: 0 });
-        console.log(workflows)
+        
         res.status(200).json(workflows);
     } catch (error) {
         res.status(500).json({ message: 'Error retrieving workflows' });
