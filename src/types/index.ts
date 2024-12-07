@@ -17,16 +17,7 @@ export const EmailTemplateSchema = z.object({
     body : z.string().min(5 , {message : "Body must be at least 5 characters"}),
 })
 
-// {
-//     "name" : "Shivam",
-//     "email" : "kalanishivam@gmail.com",
-//     "password" : "shivam1234"
-// }
-// {
-//     "email" : "test@test.com",
-//     "password" : "test1234",
-//     "name" : "testname"
-// }
+
 export const NodeSchema = z.object({
     id: z.string(),
     position: z.object({

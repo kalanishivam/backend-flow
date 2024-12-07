@@ -6,7 +6,7 @@ import workflowRoutes from './routes/workflowRoutes';
 import cors from 'cors';
 import { connectDB } from './database';
 import { initializeAgenda } from './config/initialzeAgenda';
-import { mailerConfig, recievier } from './config/mailerConfig';
+import { mailerConfig } from './config/mailerConfig';
 
 const app = express();
 const PORT = 5000;
@@ -20,13 +20,7 @@ app.use('/api/v1/user', userRoutes);
 app.use('/api/v1/templates', emailTemplateRoutes);
 app.use('/api/v1/workflow', workflowRoutes);
 
-mailerConfig.sendMail(recievier , (error, info) => {
-    if (error) {
-        console.log(error);
-    } else {
-        console.log('Email sent: ' + info.response);
-    }
-});
+
 
 app.listen(PORT, () => {
     console.log(`server started on port ${PORT}`);

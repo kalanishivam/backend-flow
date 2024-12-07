@@ -13,9 +13,18 @@ export const mailerConfig = nodemailer.createTransport({
     },
 });
 
-export const recievier = {
+// export const recievier = {
+//     from : "exmplusershivam07@gmail.com",
+//     to : ["kalanishivam@gmail.com","shivamkalani.ece23@jecrc.ac.in"],
+//     subject : "new mail",
+//     text : "This is a new test mail"
+// }
+
+export const getMessageMetaData = async(to : string[] , subject : string,  text : string)=>{
+    return {
     from : "exmplusershivam07@gmail.com",
-    to : ["kalanishivam@gmail.com","shivamkalani.ece23@jecrc.ac.in"],
-    subject : "new mail",
-    text : "This is a new test mail"
+    to : to,
+    subject : subject,
+    text : text
+    }
 }

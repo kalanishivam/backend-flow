@@ -1,7 +1,7 @@
-interface Node {
+interface NodeOfFlow {
     id: string;
     type: string;
-    position: { x: number; y: number };
+    position?: { x: number; y: number };
     data?: any;
     [key: string]: any;
 }
@@ -15,11 +15,11 @@ interface Edge {
 }
 
 
-function getNodeSequence(nodes: Node[], edges: Edge[]): Node[] {
-    // Create a map of nodes for easy lookup
+function getNodeSequence(nodes: NodeOfFlow[], edges: Edge[]): NodeOfFlow[] {
+    
     const nodeMap = new Map(nodes.map(node => [node.id, node]));
     
-    // Find the starting node (the node that isn't a target in any edge)
+    
     const allTargets = new Set(edges.map(edge => edge.target));
     const startingNode = nodes.find(node => !allTargets.has(node.id));
     
@@ -27,8 +27,8 @@ function getNodeSequence(nodes: Node[], edges: Edge[]): Node[] {
         throw new Error('No starting node found');
     }
     
-    // Initialize the sequence and tracking variables
-    const sequence: Node[] = [startingNode];
+  
+    const sequence: NodeOfFlow[] = [startingNode];
     let currentNodeId = startingNode.id;
     
     // Keep track of processed edges to avoid infinite loops
