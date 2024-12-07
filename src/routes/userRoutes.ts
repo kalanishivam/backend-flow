@@ -5,7 +5,7 @@ import { authMiddleware } from '../middlewares/auth';
 const router = Router();
 
 router.post('/signup', signupUser);
-router.get('/verify', authMiddleware, verifyToken);
+router.post('/verify', authMiddleware, verifyToken);
 router.post('/login' ,  loginUser);
 router.post('/logout',authMiddleware, logout);
 
