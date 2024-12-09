@@ -1,7 +1,17 @@
 Create .env file with the following content
 
 MONGO_URI=<your mongodb uri>
+
+
 JWT_SECRET=<your secret>
+
+MAIL_PASSWORD=
+
+MAIL_ID
+
+
+
+FRONTEND_URL
 
 
 Build the project
